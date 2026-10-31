@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buryad Hover Translator</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font: 14px/1.5 system-ui, sans-serif; margin: 16px; min-width: 340px; }
+    label { display: block; margin: 12px 0 4px; font-weight: 600; }
+    select, input[type=number] { font: inherit; padding: 4px; }
+    .row { display: flex; align-items: center; gap: 8px; margin: 8px 0; font-weight: 400; }
+    .hint { opacity: .65; font-size: 12px; margin: 2px 0 0; }
+    button { font: inherit; padding: 4px 10px; margin-top: 12px; }
+    #status { margin-left: 8px; opacity: .7; }
+  </style>
+</head>
+<body>
+  <h3>Buryad Hover Translator</h3>
+
+  <div class="row"><input type="checkbox" id="enabled"><label for="enabled" style="margin:0">Enabled</label></div>
+
+  <label for="direction">Direction</label>
+  <select id="direction">
+    <option value="bua-ru">Buryad → Russian</option>
+    <option value="ru-bua">Russian → Buryad</option>
+  </select>
+
+  <label for="modifier">Hold key to translate on hover</label>
+  <select id="modifier">
+    <option value="none">None (always on hover)</option>
+    <option value="Alt">Alt</option>
+    <option value="Control">Ctrl</option>
+    <option value="Shift">Shift</option>
+  </select>
+
+  <label for="hoverDelay">Hover delay (ms)</label>
+  <input type="number" id="hoverDelay" min="0" max="2000" step="50">
+
+  <label>Google Translate fallback</label>
+  <div class="row"><input type="checkbox" id="googleFallback"><label for="googleFallback" style="margin:0;font-weight:400">Use for phrases the dictionary can't fully translate</label></div>
+  <div class="hint">Off by default: selected text is sent to Google only when enabled. Results are cached, calls are throttled to 1/s.</div>
+  <label for="googleDailyCap">Daily Google call cap</label>
+  <input type="number" id="googleDailyCap" min="0" max="2000" step="10">
+
+  <div>
+    <button id="clear">Clear cache</button><span id="status"></span>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>
